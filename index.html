@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>5×5 Go</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>5×5 Go</h1>
+      <p class="sub">Black plays first. Two passes end the game. Territory plus stones.</p>
+    </header>
+    <div class="table">
+      <aside class="panel">
+        <div class="turn" id="turn">Black to play</div>
+        <div class="caps">
+          <span>Black took <b id="cap-b">0</b></span>
+          <span>White took <b id="cap-w">0</b></span>
+        </div>
+        <div class="score hidden" id="score"></div>
+        <div class="actions">
+          <button type="button" id="btn-pass">Pass</button>
+          <button type="button" id="btn-new">New game</button>
+        </div>
+        <label class="ai"><input type="checkbox" id="ai-white" checked /> White is the machine</label>
+        <p class="hint">Click an empty point. A move that leaves your own stones with no liberties is illegal, unless it takes.</p>
+      </aside>
+      <div class="board-wrap">
+        <canvas id="board" width="560" height="560"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="go.js"></script>
+</body>
+</html>
