@@ -10,9 +10,12 @@
   <div id="app">
     <header>
       <h1>5×5 Go</h1>
-      <p class="sub">Black plays first. Two passes end the game. Territory plus stones.</p>
+      <p class="sub">Black first. Two passes end it. Stones plus the empty points you surround.</p>
     </header>
     <div class="table">
+      <div class="board-wrap">
+        <canvas id="board" width="560" height="560"></canvas>
+      </div>
       <aside class="panel">
         <div class="turn" id="turn">Black to play</div>
         <div class="caps">
@@ -20,16 +23,45 @@
           <span>White took <b id="cap-w">0</b></span>
         </div>
         <div class="score hidden" id="score"></div>
+
+        <div class="who">
+          <label class="who-row">
+            <span>Black</span>
+            <select id="black-player">
+              <option value="human" selected>Human</option>
+              <option value="machine">Machine</option>
+            </select>
+          </label>
+          <label class="who-row">
+            <span>White</span>
+            <select id="white-player">
+              <option value="human">Human</option>
+              <option value="machine" selected>Machine</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="machine-box" class="machine-box">
+          <div id="self-play-btns" class="actions self-play hidden">
+            <button type="button" id="btn-start">Start</button>
+            <button type="button" id="btn-pause" disabled>Pause</button>
+          </div>
+          <label class="speed">
+            <span>Speed</span>
+            <input type="range" id="speed" min="1" max="5" value="2" />
+            <span id="speed-label">slow</span>
+          </label>
+        </div>
+
         <div class="actions">
           <button type="button" id="btn-pass">Pass</button>
           <button type="button" id="btn-new">New game</button>
         </div>
-        <label class="ai"><input type="checkbox" id="ai-white" checked /> White is the machine</label>
-        <p class="hint">Click an empty point. A move that leaves your own stones with no liberties is illegal, unless it takes.</p>
+
+        <ol class="log" id="log" aria-label="Game log"></ol>
+
+        <p class="hint">A1 is bottom-left; the center is C3. A move with no liberties is illegal unless it takes.</p>
       </aside>
-      <div class="board-wrap">
-        <canvas id="board" width="560" height="560"></canvas>
-      </div>
     </div>
   </div>
   <script src="go.js"></script>
